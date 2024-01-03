@@ -1,23 +1,17 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+//import React from 'react';
+//import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import Header from './components/Header';
+import './App.css'
 
-import HomePage from './pages/HomePage';
-import ProductDetailPage from './pages/ProductDetailPage';
+//import ProductDetailPage from './pages/ProductDetailPage';
 
 function App() {
   return (
-    <Router>
-      <div>
-        <Switch>
-          <Route path="/product/:productId">
-            <ProductDetailPage />
-          </Route>
-          <Route path="/">
-            <HomePage />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+    <>
+    <Header/>
+    <Outlet/>
+    </>
   );
 }
 
