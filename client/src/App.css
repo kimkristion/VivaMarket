@@ -76,6 +76,120 @@ nav a {
   color: #fff;
 }
 
+.login-page {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-page form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-page label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.login-page input {
+  padding: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-page button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-page button:hover {
+  background-color: #0056b3;
+}
+
+.login-page p {
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.login-page a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-page a:hover {
+  text-decoration: underline;
+}
+
+.signup-page {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.signup-page form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-page label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.signup-page input {
+  padding: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.signup-page button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signup-page button:hover {
+  background-color: #0056b3;
+}
+
+.signup-page p {
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.signup-page a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signup-page a:hover {
+  text-decoration: underline;
+}
+
+
+
 
 @media (max-width: 768px) {
   body {
