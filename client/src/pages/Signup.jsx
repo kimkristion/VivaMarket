@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../utils/mutations.js';
+
+import AuthService from '../utils/auth.js';
+
 const SignupPage = () => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
     password: '',
-    confirmPassword: '',
   });
+  const [addUser, { error, data }] = useMutation(ADD_USER);
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -21,74 +26,75 @@ const SignupPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // need to make signup logic
-    const isSignupSuccessful = await mockSignup(formData);
 
-    if (isSignupSuccessful) {
-      navigate('/login'); 
-    } else {
-      alert('Signup failed. Please try again.');
-    }
-  };
+    try {
+        const { data } = await addUser({
+          variables: { ...formData },
+        });
+  
+        AuthService.login(data.addUser.token);
+      } catch (e) {
+        console.error(e);
+      }
+    };
 
-  const mockSignup = async ({ username, email, password, confirmPassword }) => {
-    // Simulate signup logic (replace with your actual signup logic)
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        // Mock signup success
-        resolve(password === confirmPassword); // Basic check for password match
-      }, 1000);
-    });
-  };
-
-  return (
-    <div className="signup-page">
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          value={formData.username}
-          onChange={handleInputChange}
-        />
-
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleInputChange}
-        />
-
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={formData.password}
-          onChange={handleInputChange}
-        />
-
-        <label htmlFor="confirmPassword">Confirm Password:</label>
-        <input
-          type="password"
-          id="confirmPassword"
-          name="confirmPassword"
-          value={formData.confirmPassword}
-          onChange={handleInputChange}
-        />
-
-        <button type="submit">Sign Up</button>
-      </form>
-
-      <p>
-        Already have an account? <Link to="/login">Login</Link>
-      </p>
-    </div>
-  );
-};
+    return (
+        <main className="flex-row justify-center mb-4">
+          <div className="col-12 col-lg-10">
+            <div className="card">
+              <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
+              <div className="card-body">
+                {data ? (
+                  <p>
+                    Success! You may now head{' '}
+                    <Link to="/">back to the homepage.</Link>
+                  </p>
+                ) : (
+                  <form onSubmit={handleSubmit}>
+                    <input
+                      className="form-input"
+                      placeholder="Your username"
+                      name="username"
+                      type="text"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                    />
+                    <input
+                      className="form-input"
+                      placeholder="Your email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                    />
+                    <input
+                      className="form-input"
+                      placeholder="******"
+                      name="password"
+                      type="password"
+                      value={formData.password}
+                      onChange={handleInputChange}
+                    />
+                    <button
+                      className="btn btn-block btn-primary"
+                      style={{ cursor: 'pointer' }}
+                      type="submit"
+                    >
+                      Submit
+                    </button>
+                  </form>
+                )}
+    
+                {error && (
+                  <div className="my-3 p-3 bg-danger text-white">
+                    {error.message}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </main>
+      );
+    };
 
 export default SignupPage;
