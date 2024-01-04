@@ -39,37 +39,37 @@ const SignupPage = () => {
     };
 
     return (
-        <main className="flex-row justify-center mb-4">
-          <div className="col-12 col-lg-10">
-            <div className="card">
-              <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
-              <div className="card-body">
-                {data ? (
+       <div className='signup-page'>
+        <h2>Sign Up</h2>
+       
+        {data ? (
                   <p>
                     Success! You may now head{' '}
                     <Link to="/">back to the homepage.</Link>
                   </p>
-                ) : (
+                ) : 
+                
+                (
                   <form onSubmit={handleSubmit}>
+                    <label htmlFor="username">Username:</label>
                     <input
                       className="form-input"
-                      placeholder="Your username"
                       name="username"
                       type="text"
                       value={formData.name}
                       onChange={handleInputChange}
                     />
+                    <label htmlFor="username">Email:</label>
                     <input
                       className="form-input"
-                      placeholder="Your email"
                       name="email"
                       type="email"
                       value={formData.email}
                       onChange={handleInputChange}
                     />
+                    <label htmlFor="username">Password:</label>
                     <input
                       className="form-input"
-                      placeholder="******"
                       name="password"
                       type="password"
                       value={formData.password}
@@ -90,11 +90,8 @@ const SignupPage = () => {
                     {error.message}
                   </div>
                 )}
-              </div>
-            </div>
-          </div>
-        </main>
-      );
-    };
+                  </div>
+    )}
+                
 
 export default SignupPage;
