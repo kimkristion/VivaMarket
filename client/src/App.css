@@ -195,6 +195,11 @@ nav a {
   text-decoration: underline;
 }
 
+.errorPage {
+  text-align: center;
+  padding: 20px;
+}
+
 
 
 
