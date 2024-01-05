@@ -9,6 +9,7 @@ import Login from './pages/LoginPage.jsx';
 import Signup from './pages/Signup.jsx';
 //import Success from './pages/Success';
 //import OrderHistory from './pages/OrderHistory';
+import ContactUs from './pages/ContactUs';
 import Error from './pages/Error.jsx'
 
 const router = createBrowserRouter([
@@ -22,7 +23,8 @@ const router = createBrowserRouter([
         element: <Home />
       },
       { path: '/login', element: <Login /> },
-      { path: '/signup', element: <Signup />}
+      { path: '/signup', element: <Signup />},
+      { path: '/contact-us', element: <ContactUs /> }
     ]
   }
 ]);

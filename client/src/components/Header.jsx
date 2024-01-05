@@ -29,7 +29,7 @@ const Header = () => {
         <Link to="/"><a>Home</a></Link>
         <a href="#">Shop</a>
         <a href="#">Categories</a>
-        <a href="#">Contact</a>
+        <Link to="/contact-us"><a>Contact</a></Link> 
       </nav>
 
       {Auth.loggedIn() ? (
