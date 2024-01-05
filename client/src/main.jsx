@@ -1,13 +1,12 @@
 import ReactDOM from 'react-dom/client'
-//import './index.css'
+import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import App from './App.jsx';
+import App from './App';
 import Home from './pages/HomePage.jsx';
 //import Detail from './pages/Detail.jsx';
 import Login from './pages/LoginPage.jsx';
 import Signup from './pages/Signup.jsx';
-//import Signup from './pages/Signup';
 //import Success from './pages/Success';
 //import OrderHistory from './pages/OrderHistory';
 import Error from './pages/Error.jsx'
