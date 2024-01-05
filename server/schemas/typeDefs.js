@@ -4,22 +4,26 @@ const typeDefs = `
     username: String
     email: String
     password: String
-    thoughts: [Thought]!
+    reviews: [Review]!
   }
 
-  type Thought {
-    _id: ID
-    thoughtText: String
-    thoughtAuthor: String
-    createdAt: String
-    comments: [Comment]!
+  type Review {
+    reviewId: ID!
+    reviewBody: String!
+    user: User!
+    createdAt: String!
   }
 
-  type Comment {
-    _id: ID
-    commentText: String
-    commentAuthor: String
-    createdAt: String
+  type Product {
+    _id: ID!
+    name: String!
+    description: String
+    price: Float!
+    quantity: Int!
+    category: String!
+    imageUrl: String
+    createdAt: String!
+    reviews: [Review]!
   }
 
   type Auth {
@@ -30,18 +34,29 @@ const typeDefs = `
   type Query {
     users: [User]
     user(username: String!): User
-    thoughts(username: String): [Thought]
-    thought(thoughtId: ID!): Thought
+    getProductById(productId: ID!): Product
+    getAllProducts: [Product]
     me: User
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(username: String!, password: String!): Auth
-    addThought(thoughtText: String!): Thought
-    addComment(thoughtId: ID!, commentText: String!): Thought
-    removeThought(thoughtId: ID!): Thought
-    removeComment(thoughtId: ID!, commentId: ID!): Thought
+    createProduct(input: ProductInput): Product
+    addReview(productId: ID!, input: ReviewInput): Product
+  }
+
+  input ProductInput {
+    name: String!
+    description: String,
+    price: Float!
+    quantity: Int!
+    category: String
+    imageUrl: String
+  }
+
+  input ReviewInput {
+    reviewBody: String!
   }
 `;
 

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import CartIcon from '/src/assets/CartLogo.png'
+import Cart from '../components/Cart';
 
 import Auth from '../utils/auth';
 
@@ -35,10 +35,7 @@ const Header = () => {
             </>
           )}
 
-      <div className="cart">
-        <span className="cart-icon"><img src={CartIcon}/></span>
-        <span id="cart-inventory">0</span> {/* implement dynamically updating cart count */}
-      </div>
+      <Cart />
     </header>
   );
 };
