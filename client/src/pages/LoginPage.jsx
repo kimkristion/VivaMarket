@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-const LoginPage = () => {
-  const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-  });
+import Auth from '../utils/auth.js';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../utils/mutations.js';
 
-  const navigate = useNavigate();
+const Login = (props) => {
+  const [formData, setFormData] = useState({ username: '', password: '' });
+  const [login, { error, data }] = useMutation(LOGIN_USER);
+
+  //const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -19,22 +21,26 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const isAuthenticated = await mockAuthentication(formData);
+    console.log(formData);
 
-    if (isAuthenticated) {
-      navigate('/dashboard');
-    } else {
-      alert('Invalid credentials');
-    }
-  };
+    try {
+      const { data } = await login({
+        variables: { ...formData },
+      });
 
-  const mockAuthentication = async ({ username, password }) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(username === 'demo' && password === 'password');
-      }, 1000);
-    });
-  };
+      Auth.login(data.login.token);
+    } catch (error) {
+      console.error(error);
+      alert('Invalid Login');
+    };
+
+      // clear form values
+      setFormData({
+        username: '',
+        password: '',
+      });
+    };
+
 
   return (
     <div className="login-page">
@@ -68,4 +74,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Login;

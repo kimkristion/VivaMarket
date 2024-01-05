@@ -56,7 +56,7 @@ const SignupPage = () => {
                       className="form-input"
                       name="username"
                       type="text"
-                      value={formData.name}
+                      value={formData.username}
                       onChange={handleInputChange}
                     />
                     <label htmlFor="username">Email:</label>

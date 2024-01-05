@@ -12,7 +12,6 @@ import './App.css'
 
 //import ProductDetailPage from './pages/ProductDetailPage';
 
-// Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
