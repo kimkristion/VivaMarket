@@ -76,6 +76,13 @@ nav a {
   color: #fff;
 }
 
+.account {
+  color: white; 
+  text-decoration: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
 .login-page {
   max-width: 400px;
   margin: auto;
