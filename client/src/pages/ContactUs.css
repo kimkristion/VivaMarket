@@ -25,3 +25,21 @@ form textarea {
     font-size: 18px;
     border-radius: 6px;
 }
+
+.profiles-section {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .profile-card {
+    text-align: center;
+    max-width: 200px;
+  }
+  
+  .profile-card img {
+    width: 100%;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
