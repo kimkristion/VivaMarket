@@ -1,24 +1,19 @@
-import { useState } from 'react';
-import AddToCartAction from './AddToCartAction';
-import CartIcon from '/src/assets/CartLogo.png';
+import React from 'react';
 
-const Cart = () => {
-    const [cartCount, setCartCount] = useState(0);
-
-    const addToCart = () => {
-        setCartCount(cartCount + 1);
-    };
-
-    return (
-    <header>
-        <div className="cart">
-            <span className="cart-icon"><img src={CartIcon}/></span>
-            <span id="cart-inventory">{cartCount}</span>
-        </div>
-
-        <AddToCartAction addToCart={addToCart} />
-    </header>
-    );
+const Cart = ({ cartItems, removeFromCart }) => {
+  return (
+    <div>
+      <h2>Shopping Cart</h2>
+      <ul>
+        {cartItems.map((item) => (
+          <li key={item.id}>
+            {item.name} - ${item.price}
+            <button onClick={() => removeFromCart(item.id)}>Remove</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default Cart;
