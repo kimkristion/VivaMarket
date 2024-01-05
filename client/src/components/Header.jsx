@@ -1,13 +1,25 @@
 import { Link } from 'react-router-dom';
 import CartIcon from '/src/assets/CartLogo.png'
-
+import React, { useState } from 'react';
 import Auth from '../utils/auth';
+import CartModal from './CartModal'; 
 
 const Header = () => {
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
   };
+  
+  const [isCartOpen, setCartOpen] = useState(false);
+
+  const openCart = () => {
+    setCartOpen(true);
+  };
+
+  const closeCart = () => {
+    setCartOpen(false);
+  };
+
   return (
     <header>
       
@@ -17,7 +29,7 @@ const Header = () => {
         <Link to="/"><a>Home</a></Link>
         <a href="#">Shop</a>
         <a href="#">Categories</a>
-        <a href="#">Contact</a>
+        <Link to="/contact-us"><a>Contact</a></Link> 
       </nav>
 
       {Auth.loggedIn() ? (
@@ -35,10 +47,12 @@ const Header = () => {
             </>
           )}
 
-      <div className="cart">
+      <div className="cart" onClick={openCart}>
         <span className="cart-icon"><img src={CartIcon}/></span>
         <span id="cart-inventory">0</span> {/* implement dynamically updating cart count */}
+        
       </div>
+      {isCartOpen && <CartModal closeCart={closeCart} />}
     </header>
   );
 };
