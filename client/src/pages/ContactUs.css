@@ -12,13 +12,18 @@
     margin-bottom: 20px;
   }
   
+.dark form textarea, .dark form input {
+  background-color: #4e4e4e;
+}
+.light form textarea, .light form input {
+  background-color: #a5a5a5;
+}
 
 form input,
 form textarea {
     width: 100%;
     border: 0;
     outline: none;
-    background: #4e4e4e;
     padding: 15px;
     margin: 15px 0;
     color: white;

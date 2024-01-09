@@ -1,7 +1,5 @@
 
 .footer-container {
-    background-color: #333;
-    color: #fff;
     padding: 10px;
     display: flex;
     justify-content: space-around;
@@ -9,6 +7,16 @@
     position: sticky;
     bottom: 0;
   }
+
+.dark footer, .dark footer a {
+  background-color: #525252;
+  color: #fff;
+}
+
+.light footer, .light footer a {
+  background-color: rgb(255, 255, 255);
+  color: #000000;
+}
   
   .footer-section {
     max-width: 200px;
@@ -26,7 +34,6 @@
   }
   
   .footer-section a {
-    color: #fff;
     text-decoration: none;
     display: block;
     margin-bottom: 5px;
