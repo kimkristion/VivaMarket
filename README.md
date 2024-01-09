@@ -37,7 +37,7 @@ Provide detailed instructions on how to set up the VivaMarket project locally. I
 2. Navigate to the project directory: `cd VivaMarket`
 3. Install dependencies: `npm install`
 4. Set up environment variables for configuration (e.g., database connection, payment gateway credentials)
-5. Start the development server: `npm start`
+5. Start the development server: `npm run develop`
 
 ## Usage
 Explain how to use the VivaMarket e-commerce website. For example:
