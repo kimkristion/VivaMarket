@@ -15,7 +15,7 @@ const typeDefs = `
   }
 
   type Product {
-    _id: ID!
+    _id: ID
     name: String!
     description: String
     price: Float!
@@ -34,29 +34,27 @@ const typeDefs = `
   type Query {
     users: [User]
     user(username: String!): User
-    getProductById(productId: ID!): Product
-    getAllProducts: [Product]
     me: User
+    products: [Product]
+    product(name: String!): Product
+  }
+
+  input ReviewInput {
+    reviewBody: String!
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(username: String!, password: String!): Auth
-    createProduct(input: ProductInput): Product
+    createProduct(
+      name: String!,
+      description: String,
+      price: Float!,
+      quantity: Int!,
+      category: String,
+      imageUrl: String
+    ): Product
     addReview(productId: ID!, input: ReviewInput): Product
-  }
-
-  input ProductInput {
-    name: String!
-    description: String,
-    price: Float!
-    quantity: Int!
-    category: String
-    imageUrl: String
-  }
-
-  input ReviewInput {
-    reviewBody: String!
   }
 `;
 

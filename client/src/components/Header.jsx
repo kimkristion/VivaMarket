@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
-import Cart from '../components/Cart';
+import { useState } from 'react'
+import CartIcon  from '../assets/CartLogo.png'
+//import Cart from '../components/Cart';
 import Auth from '../utils/auth';
 import CartModal from './CartModal'; 
+import SearchBar from './SearcBar';
 
 const Header = () => {
   const logout = (event) => {
@@ -26,8 +29,10 @@ const Header = () => {
 
       <nav>
         <Link to="/"><a>Home</a></Link>
+        <SearchBar />
+
         <a href="#">Shop</a>
-        <a href="#">Categories</a>
+        <a href="/categories">Categories</a>
         <Link to="/contact-us"><a>Contact</a></Link> 
       </nav>
 

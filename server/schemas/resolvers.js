@@ -1,4 +1,4 @@
-const { User, Product } = require('../models/index')
+const { User, Product } = require('../models/index');
 const { signToken, AuthenticationError, dateFormat } = require('../utils/auth');
 
 const resolvers = {
@@ -13,7 +13,7 @@ const resolvers = {
       if (context.user) {
         return User.findOne({ _id: context.user._id });
       }
-      throw AuthenticationError;
+      throw new AuthenticationError('Not authenticated');
     },
     product: async (parent, { name }) => {
       return Product.findOne({ name });
@@ -33,27 +33,52 @@ const resolvers = {
       const user = await User.findOne({ username });
 
       if (!user) {
-        throw AuthenticationError;
+        throw new AuthenticationError('User not found');
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw AuthenticationError;
+        throw new AuthenticationError('Incorrect Password');
       }
 
       const token = signToken(user);
 
       return { token, user };
     },
-    createProduct: async (parent, { input }) => {
-      const product = await Product.create({
-        ...input,
-        createdAt: Date.now(),
-      });
-      await product.save();
-      return product;
+
+    createProduct: async (parent, {
+      name,
+      description,
+      price,
+      quantity,
+      category,
+      imageUrl
+    }) => {
+      try {
+        const existingProduct = await Product.findOne({ name });
+    
+        if (existingProduct) {
+          throw new Error("Product with this name already exists");
+        }
+    
+        const product = await Product.create({
+          name,
+          description,
+          price,
+          quantity,
+          category,
+          imageUrl,
+          createdAt: Date.now(),
+        });
+    
+        return product;
+      } catch (error) {
+        console.error("Error creating product:", error);
+        throw new Error("Failed to create product");
+      }
     },
+    
     addReview: async (_, { name, input }) => {
       const product = await Product.findOne({ name });
       if (!product) {

@@ -13,17 +13,14 @@ const reviewSchema = new Schema({
     maxlength: 280,
   },
   user: {
-    username: { type: Types.ObjectId, ref: 'User' },
-    reviewBody: {
-      type: String,
-      required: true,
-      maxlength: 280,
-    },
-    createdAt: {
-      type: Date,
-      default: Date.now(),
-      get: (timestamp) => dateFormat(timestamp),
-    },
+    type: Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+    get: (timestamp) => dateFormat(timestamp),
   },
 });
 
@@ -34,7 +31,7 @@ const productSchema = new Schema({
     trim: true,
     minlength: 2,
     maxlength: 255,
-    unique: true, // Ensure uniqueness only if necessary
+    unique: true,
   },
   description: {
     type: String,
