@@ -17,7 +17,7 @@ const typeDefs = `
   type Product {
     _id: ID
     name: String!
-    description: String
+    description: String!
     price: Float!
     quantity: Int!
     category: String!
@@ -48,11 +48,11 @@ const typeDefs = `
     login(username: String!, password: String!): Auth
     createProduct(
       name: String!,
-      description: String,
+      description: String!,
       price: Float!,
       quantity: Int!,
       category: String,
-      imageUrl: String
+      imageUrl: String!
     ): Product
     addReview(productId: ID!, input: ReviewInput): Product
   }

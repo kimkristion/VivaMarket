@@ -1,7 +1,6 @@
-// ProductCard.js
-
 import React, { useState } from 'react';
 import { useQuery, gql } from '@apollo/client';
+import './Product.css';
 
 const GET_PRODUCTS = gql`
   query {
@@ -49,9 +48,9 @@ function ProductCard() {
   };
 
   return (
-    <div>
+    <div className='product-list'>
       <h2>Product List</h2>
-      <div>
+      <div className='search-bar'>
         <input
           type="text"
           placeholder="Search on VivaMarket"
@@ -59,17 +58,21 @@ function ProductCard() {
           onChange={(e) => handleSearch(e.target.value)}
         />
       </div>
-      {products.map((product) => (
-        <div key={product._id}>
-          <h3>{product.name}</h3>
-          <p>Description: {product.description}</p>
-          <p>Price: ${product.price}</p>
-          <p>Quantity: {product.quantity}</p>
-          {/* Additional fields as needed */}
-        </div>
-      ))}
+      <div className='products'>
+        {products.map((product) => (
+          <div key={product._id} className='product-card'>
+            <img
+             src={product.imageUrl} 
+             alt={product.name} 
+             className='product-image'
+             />
+            <h3>${product.price}</h3>
+            <p>{product.name}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
-}
+};
 
 export default ProductCard;
