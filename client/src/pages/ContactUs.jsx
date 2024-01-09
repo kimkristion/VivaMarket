@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import './ContactUs.css';
 
 
-
-
-
 const ContactUs = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -20,11 +17,29 @@ const ContactUs = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     console.log('Form submitted:', formData);
-    
+
+    try {
+      const response = await fetch('http://localhost:3001/contact-us', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        console.log('Email sent successfully');
+      } else {
+        console.error('Failed to send email');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+    }
+
     setFormData({
       name: '',
       email: '',
