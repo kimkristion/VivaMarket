@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import CartIcon from '/src/assets/CartLogo.png'
-import React, { useState } from 'react';
+import { useState } from 'react'
+import CartIcon  from '../assets/CartLogo.png'
+//import Cart from '../components/Cart';
 import Auth from '../utils/auth';
 import CartModal from './CartModal'; 
 import { useTheme } from './ThemeContext';
@@ -32,7 +33,7 @@ const Header = () => {
       <nav>
         <Link to="/"><a>Home</a></Link>
         <a href="#">Shop</a>
-        <a href="#">Categories</a>
+        <a href="/categories">Categories</a>
         <Link to="/contact-us"><a>Contact</a></Link> 
         <button className='darkBtn' onClick={toggleTheme}>
            <span className="darkThemeIcon">
@@ -59,7 +60,6 @@ const Header = () => {
       <div className="cart" onClick={openCart}>
         <span className="cart-icon"><img src={CartIcon}/></span>
         <span id="cart-inventory">0</span> {/* implement dynamically updating cart count */}
-        
       </div>
       {isCartOpen && <CartModal closeCart={closeCart} />}
     </header>
