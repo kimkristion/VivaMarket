@@ -10,6 +10,7 @@ import { Outlet } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './App.css'
+import { ThemeProvider } from './components/ThemeContext';
 
 //import ProductDetailPage from './pages/ProductDetailPage';
 
@@ -37,9 +38,13 @@ function App() {
   return (
     <ApolloProvider client={client}>
     <>
-    <Header/>
-    <Outlet/>
-    <Footer />
+    <ThemeProvider>
+      <div className='App'>
+        <Header/>
+        <Outlet/>
+        <Footer />
+    </div>
+    </ThemeProvider>
     </>
     </ApolloProvider>
   );
