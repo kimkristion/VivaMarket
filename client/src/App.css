@@ -2,6 +2,7 @@ body, h1, h2, h3, p, ul, li {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 body, html {
@@ -17,13 +18,41 @@ body, html {
 }
 
 .dark {
-  background-color: #1a1a1a;
+  background-color: #1f1f23;
   color: #ffffff;
 }
 
 .light {
-  background-color: #ffffff;
+  background-color: #fff;
   color: #000000;
+}
+
+.dark header {
+  background-color: #173054;
+  color: #fff;
+}
+.dark .wave .shape-fill {
+  fill: #173054;
+}
+
+.wave {
+  position: absolute;
+  top: 9%;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wave svg {
+  position: relative;
+  display: block;
+  width: calc(111% + 1.3px);
+  height: 198px;
+}
+
+.wave .shape-fill {
+  fill: #173054;
 }
 
 header {
@@ -31,8 +60,8 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
-  background-color: grey;
-  color: black;
+  background-color: #173054;
+  color: rgb(0, 0, 0);
   border-bottom: 0.5px solid #000;
   height: 3.5rem;
 }
@@ -41,7 +70,7 @@ header {
   font-size: 1.5em;
   font-weight: bold;
   text-decoration: none;
-  color: #fff;
+  color: blue;
 }
 
 nav {
@@ -49,19 +78,17 @@ nav {
 }
 
 nav a {
-  color: black;
+  color: rgb(0, 0, 0);
   text-decoration: none;
   margin: 0 15px;
   font-weight: bold;
 }
 
-.darkThemeIcon {
-  font-size: 1.1rem;
-}
 
 .darkThemeIcon img {
   height: auto;
   width: 25px;
+  border-style: none;
 }
 
 .darkThemeIcon:hover {
@@ -72,6 +99,7 @@ nav a {
   background-color: transparent;
   margin: 0;
   padding: 0;
+  border-style: none;
 }
 
 .cart:hover {
@@ -106,7 +134,7 @@ nav a {
 }
 
 .account {
-  color: white; 
+  color: blue; 
   text-decoration: none;
   cursor: pointer;
   margin-right: 10px;
@@ -239,6 +267,11 @@ nav a {
 }
 
 
+@keyframes slideIn {
+  to {
+    left: 0;
+  }
+}
 
 
 @media (max-width: 768px) {
