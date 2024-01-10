@@ -13,6 +13,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import { CartProvider } from './contexts/CartContext';
 import './App.css'
+import { ThemeProvider } from './components/ThemeContext';
 
 //import ProductDetailPage from './pages/ProductDetailPage';
 
@@ -41,11 +42,13 @@ function App() {
   return (
     <ApolloProvider client={client}>
     <>
-    <CartProvider>
-    <Header/>
-    <Outlet/>
-    <Footer />
-    </CartProvider>
+    <ThemeProvider>
+      <div className='App'>
+        <Header/>
+        <Outlet/>
+        <Footer />
+    </div>
+    </ThemeProvider>
     </>
     </ApolloProvider>
   );

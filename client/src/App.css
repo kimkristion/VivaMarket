@@ -19,6 +19,16 @@ body, html {
   padding-bottom: 200px;
 }
 
+.dark {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
 header {
   display: flex;
   align-items: center;
@@ -46,6 +56,25 @@ nav a {
   text-decoration: none;
   margin: 0 15px;
   font-weight: bold;
+}
+
+.darkThemeIcon {
+  font-size: 1.1rem;
+}
+
+.darkThemeIcon img {
+  height: auto;
+  width: 25px;
+}
+
+.darkThemeIcon:hover {
+  cursor: pointer;
+}
+
+.darkBtn {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
 }
 
 .cart:hover {
