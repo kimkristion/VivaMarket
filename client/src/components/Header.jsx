@@ -3,7 +3,6 @@ import { useState } from 'react'
 import CartIcon  from '../assets/CartLogo.png'
 //import Cart from '../components/Cart';
 import Auth from '../utils/auth';
-import CartModal from './CartModal'; 
 
 const Header = () => {
   const logout = (event) => {
@@ -11,16 +10,6 @@ const Header = () => {
     Auth.logout();
   };
   
-  const [isCartOpen, setCartOpen] = useState(false);
-
-  const openCart = () => {
-    setCartOpen(true);
-  };
-
-  const closeCart = () => {
-    setCartOpen(false);
-  };
-
   return (
     <header>
       
@@ -48,11 +37,12 @@ const Header = () => {
             </>
           )}
 
-      <div className="cart" onClick={openCart}>
+      <Link to='/cart'>
+      <div className="cart">
         <span className="cart-icon"><img src={CartIcon}/></span>
         <span id="cart-inventory">0</span> {/* implement dynamically updating cart count */}
       </div>
-      {isCartOpen && <CartModal closeCart={closeCart} />}
+      </Link>
     </header>
   );
 };

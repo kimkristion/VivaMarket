@@ -24,5 +24,28 @@ export const ADD_USER = gql`
   }
 `;
 
+export const GET_PRODUCTS = gql`
+  query {
+    products {
+      name
+      description
+      price
+      quantity
+      category
+      imageUrl
+      createdAt
+      reviews {
+        reviewId
+        reviewBody
+        user {
+          _id
+          username
+        }
+        createdAt
+      }
+    }
+  }
+`;
+
 
 

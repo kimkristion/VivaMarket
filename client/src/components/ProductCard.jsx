@@ -1,31 +1,11 @@
 import React, { useState } from 'react';
 import { useQuery, gql } from '@apollo/client';
+import { useHistory } from 'react-router-dom'; 
 import './Product.css';
-
-const GET_PRODUCTS = gql`
-  query {
-    products {
-      name
-      description
-      price
-      quantity
-      category
-      imageUrl
-      createdAt
-      reviews {
-        reviewId
-        reviewBody
-        user {
-          _id
-          username
-        }
-        createdAt
-      }
-    }
-  }
-`;
+import { GET_PRODUCTS } from '../utils/mutations';
 
 function ProductCard() {
+  const history = useHistory(); // Initialize useHistory
   const { loading, error, data } = useQuery(GET_PRODUCTS);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -47,6 +27,17 @@ function ProductCard() {
     }
   };
 
+  const handleAddToCart = (product) => {
+    // Implement your logic to add the product to the cart
+    // You can use context, state management, or any other method
+    // For simplicity, let's assume you have a function to add to the cart in a context or state
+    // Update this part based on your actual cart implementation
+    addToCart(product);
+
+    // Navigate to the cart page
+    history.push('/cart');
+  };
+
   return (
     <div className='product-list'>
       <h2>Product List</h2>
@@ -60,12 +51,13 @@ function ProductCard() {
       </div>
       <div className='products'>
         {products.map((product) => (
-          <div key={product._id} className='product-card'>
+          <div key={product.id} className='product-card'>
             <img
              src={product.imageUrl} 
              alt={product.name} 
              className='product-image'
              />
+            <button className='add-button' onClick={() => handleAddToCart(product)}>+ Add</button>
             <h3>${product.price}</h3>
             <p>{product.name}</p>
           </div>
