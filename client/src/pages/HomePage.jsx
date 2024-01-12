@@ -11,24 +11,14 @@ export default function HomePage() {
   ];
 
   const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    centerMode: true,
-    centerPadding: "0",
     autoplay: true,
     autoplaySpeed: 3000,
   };
 
- 
-
-
-
   return (
     <div className="home-container">
       <h2>Welcome to our ecommerce website</h2>
+
       <Slider {...settings}>
         {images.map((image, index) => (
           <div key={index}>
@@ -36,6 +26,9 @@ export default function HomePage() {
           </div>
         ))}
       </Slider>
+      <button className="btn">
+        <a href="/categories">SEARCH</a>
+      </button>
     </div>
   );
 }
