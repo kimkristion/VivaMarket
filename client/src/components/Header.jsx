@@ -1,13 +1,12 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react'
-import CartIcon  from '../assets/CartLogo.png'
-import Auth from '../utils/auth';
-import { useTheme } from '../contexts/ThemeContext';
+import CartIcon from '../assets/CartLogo.png';
 import DarkThemeIcon from '/src/assets/dark theme.png';
+import { useTheme } from '../contexts/ThemeContext';
 import { useCart } from '../contexts/CartContext';
+import Auth from '../utils/auth';
 
 const Header = () => {
-
   const { toggleTheme } = useTheme();
   const { cartCount } = useCart();
 
@@ -18,41 +17,44 @@ const Header = () => {
 
   return (
     <header>
-      
-      <Link to="/" ><span className="logo">VivaMarket</span></Link>
+      <Link to="/">
+        <span className="logo">VivaMarket</span>
+      </Link>
 
       <nav>
-        <Link to="/"><a>Home</a></Link>
+        <Link to="/">Home</Link>
         <a href="#">Shop</a>
         <Link to="/categories">Categories</Link>
-        <Link to="/contact-us"><a>Contact</a></Link> 
-        <button className='darkBtn' onClick={toggleTheme}>
-           <span className="darkThemeIcon">
-            <img src={DarkThemeIcon}/>
-            </span>
+        <Link to="/contact-us">Contact</Link>
+        <button className="darkBtn" onClick={toggleTheme}>
+          <span className="darkThemeIcon">
+            <img src={DarkThemeIcon} alt="Dark Theme" />
+          </span>
         </button>
       </nav>
 
       {Auth.loggedIn() ? (
-            <>
-            <a className="account" onClick={logout}>Logout</a>
-            </>
-          ) : (
-            <>
-              <Link className="account" to="/login">
-                Login
-              </Link>
-              <Link className="account" to="/signup">
-                Signup
-              </Link>
-            </>
-          )}
+        <a className="account" onClick={logout}>
+          Logout
+        </a>
+      ) : (
+        <>
+          <Link className="account" to="/login">
+            Login
+          </Link>
+          <Link className="account" to="/signup">
+            Signup
+          </Link>
+        </>
+      )}
 
-      <Link to='/cart'>
-      <div className="cart">
-        <span className="cart-icon"><img src={CartIcon}/></span>
-        <span id={`cart-inventory`}>{cartCount}</span>
-      </div>
+      <Link to="/cart">
+        <div className="cart">
+          <span className="cart-icon">
+            <img src={CartIcon} alt="Cart" />
+          </span>
+          <span id="cart-inventory">{cartCount}</span>
+        </div>
       </Link>
     </header>
   );
