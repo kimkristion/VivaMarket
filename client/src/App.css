@@ -67,12 +67,48 @@ header {
   border-bottom: 0.5px solid #000;
   height: 3.5rem;
 }
+.home-container {
+  max-width: 1280px; 
+  margin: 0 auto; 
+  text-align: center;
+}
+.home-container img {
+  width: 50%;
+}
 
-.logo {
-  font-size: 1.5em;
-  font-weight: bold;
-  text-decoration: none;
-  color: blue;
+
+.slick-track {
+  display: flex;
+  justify-content: center;
+}
+.slick-arrow {
+ 
+  transform: translateY(-50%);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.custom-prev-arrow,
+.custom-next-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.custom-prev-arrow {
+  left: 10px;
+}
+
+.custom-next-arrow {
+  right: 10px;
+}
+
+.logo img {
+  width: 25%;
+  border-radius: 50%;
+  margin-bottom: 10px;
 }
 
 nav {

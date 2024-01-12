@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react'
 import CartIcon  from '../assets/CartLogo.png'
+import Logo from '../assets/logo 3-svg.svg'
 import Auth from '../utils/auth';
 import { useTheme } from '../contexts/ThemeContext';
 import DarkThemeIcon from '/src/assets/dark theme.png';
@@ -19,7 +20,7 @@ const Header = () => {
   return (
     <header>
       
-      <Link to="/" ><span className="logo">VivaMarket</span></Link>
+      <Link to="/" ><span className="logo"><img src={Logo} alt="" /></span></Link>
 
       <nav>
         <Link to="/"><a>Home</a></Link>
