@@ -1,28 +1,19 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react'
 import CartIcon  from '../assets/CartLogo.png'
-//import Cart from '../components/Cart';
 import Auth from '../utils/auth';
-import CartModal from './CartModal'; 
-import { useTheme } from './ThemeContext';
+import { useTheme } from '../contexts/ThemeContext';
 import DarkThemeIcon from '/src/assets/dark theme.png';
+import { useCart } from '../contexts/CartContext';
 
 const Header = () => {
+
+  const { toggleTheme } = useTheme();
+  const { cartCount } = useCart();
+
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
-  };
-  
-  const { darkMode, toggleTheme } = useTheme();
-
-  const [isCartOpen, setCartOpen] = useState(false);
-
-  const openCart = () => {
-    setCartOpen(true);
-  };
-
-  const closeCart = () => {
-    setCartOpen(false);
   };
 
   return (
@@ -33,7 +24,7 @@ const Header = () => {
       <nav>
         <Link to="/"><a>Home</a></Link>
         <a href="#">Shop</a>
-        <a href="/categories">Categories</a>
+        <Link to="/categories">Categories</Link>
         <Link to="/contact-us"><a>Contact</a></Link> 
         <button className='darkBtn' onClick={toggleTheme}>
            <span className="darkThemeIcon">
@@ -57,11 +48,12 @@ const Header = () => {
             </>
           )}
 
-      <div className="cart" onClick={openCart}>
+      <Link to='/cart'>
+      <div className="cart">
         <span className="cart-icon"><img src={CartIcon}/></span>
-        <span id="cart-inventory">0</span> {/* implement dynamically updating cart count */}
+        <span id={`cart-inventory`}>{cartCount}</span>
       </div>
-      {isCartOpen && <CartModal closeCart={closeCart} />}
+      </Link>
     </header>
   );
 };

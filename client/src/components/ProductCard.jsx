@@ -1,31 +1,11 @@
 import React, { useState } from 'react';
 import { useQuery, gql } from '@apollo/client';
 import './Product.css';
-
-const GET_PRODUCTS = gql`
-  query {
-    products {
-      name
-      description
-      price
-      quantity
-      category
-      imageUrl
-      createdAt
-      reviews {
-        reviewId
-        reviewBody
-        user {
-          _id
-          username
-        }
-        createdAt
-      }
-    }
-  }
-`;
+import { GET_PRODUCTS } from '../utils/mutations';
+import { useCart } from '../contexts/CartContext';
 
 function ProductCard() {
+  const { addToCart } = useCart();
   const { loading, error, data } = useQuery(GET_PRODUCTS);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -47,6 +27,10 @@ function ProductCard() {
     }
   };
 
+  const handleAddToCart = (product) => {
+    addToCart(product);
+  };
+
   return (
     <div className='product-list'>
       <h2>Product List</h2>
@@ -60,12 +44,13 @@ function ProductCard() {
       </div>
       <div className='products'>
         {products.map((product) => (
-          <div key={product._id} className='product-card'>
+          <div key={product.id} className='product-card'>
             <img
              src={product.imageUrl} 
              alt={product.name} 
              className='product-image'
              />
+            <button className='add-button' onClick={() => handleAddToCart()}>+ Add</button>
             <h3>${product.price}</h3>
             <p>{product.name}</p>
           </div>

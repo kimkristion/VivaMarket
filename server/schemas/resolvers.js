@@ -101,7 +101,7 @@ const resolvers = {
       await product.save();
       return product;
     },
-  },
+  }
 };
 
 module.exports = resolvers;
