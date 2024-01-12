@@ -15,7 +15,7 @@ const typeDefs = `
   }
 
   type Product {
-    _id: ID
+    _id: ID!
     name: String!
     description: String!
     price: Float!
@@ -25,6 +25,7 @@ const typeDefs = `
     createdAt: String!
     reviews: [Review]!
   }
+
 
   type Auth {
     token: ID!
@@ -51,7 +52,7 @@ const typeDefs = `
       description: String!,
       price: Float!,
       quantity: Int!,
-      category: String,
+      category: String!,
       imageUrl: String!
     ): Product
     addReview(productId: ID!, input: ReviewInput): Product
