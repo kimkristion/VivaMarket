@@ -4,11 +4,16 @@ import './CartPage.css';
 import EmptyCart from '../assets/EmptyCart.png';
 
 const CartPage = () => {
-  const { cartItems, removeFromCart } = useCart();
+  const { cartItems, removeFromCart, updateCartItemQuantity } = useCart();
   const { cartCount } = useCart();
 
-  const handleDelete = (index) => {
-    removeFromCart(index);
+  const handleDelete = (item) => {
+    removeFromCart(item);
+  };
+
+  const handleQuantityChange = (item, newQuantity) => {
+    const updatedItem = parseInt(newQuantity, 10);
+    updateCartItemQuantity({ ...item, quantity: isNaN(updatedItem) ? 1 : updatedItem });
   };
 
   return (
@@ -46,7 +51,14 @@ const CartPage = () => {
                   </div>
                 </td>
                 <td className="price-cell">${item.price}</td>
-                <td className="quantity-cell">{item.quantity}</td>
+                <td className="quantity-cell">
+                  <input
+                    type="number"
+                    value={item.quantity}
+                    onChange={(e) => handleQuantityChange(item, e.target.value)}
+                    min="1"
+                  />
+                </td>
                 <td className="total-cell">${item.price * item.quantity}</td>
                 <td className="delete-cell">
                   <button onClick={() => handleDelete(item)}>Delete</button>

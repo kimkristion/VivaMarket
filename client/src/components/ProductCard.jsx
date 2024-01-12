@@ -29,7 +29,13 @@ function ProductCard() {
   };
 
   const handleAddToCart = (product) => {
-    addToCart(product);
+    const isInCart = cartItems.some((item) => item === product);
+
+    if (!isInCart) {
+      addToCart(product);
+    } else {
+      console.log('Product is already in the cart');
+    }
   };
 
   return (
@@ -51,12 +57,18 @@ function ProductCard() {
               alt={product.name}
               className='product-image'
             />
-            <button
+            {cartItems.includes(product) ? (
+              <button className='product-amount'>
+                Quantity
+              </button>
+            ) : (
+              <button
               className='add-button'
               onClick={() => handleAddToCart(product)}
             >
               + Add
             </button>
+            )}
             <h3>${product.price}</h3>
             <p>{product.name}</p>
           </div>
