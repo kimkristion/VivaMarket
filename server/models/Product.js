@@ -51,7 +51,7 @@ const productSchema = new Schema({
   },
   category: {
     type: String,
-    enum: ['Electronics', 'Furniture', 'Other'],
+    enum: ['Electronics', 'Pet', 'Room Decor'],
     default: 'Other',
   },
   imageUrl: {

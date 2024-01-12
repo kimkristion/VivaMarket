@@ -45,7 +45,9 @@ export const GET_PRODUCTS = gql`
       }
     }
   }
+
 `;
+
 
 
 

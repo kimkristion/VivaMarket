@@ -13,7 +13,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import { CartProvider } from './contexts/CartContext';
 import './App.css'
-import { ThemeProvider } from './components/ThemeContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 //import ProductDetailPage from './pages/ProductDetailPage';
 
@@ -43,11 +43,13 @@ function App() {
     <ApolloProvider client={client}>
     <>
     <ThemeProvider>
+      <CartProvider>
       <div className='App'>
         <Header/>
         <Outlet/>
         <Footer />
     </div>
+      </CartProvider>
     </ThemeProvider>
     </>
     </ApolloProvider>
