@@ -8,14 +8,26 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (product) => {
     setCartItems((prevCartItems) => [...prevCartItems, product]);
-
     setCartCount((prevCartCount) => prevCartCount + 1);
+  };
+
+  const removeFromCart = (product) => {
+    setCartItems((prevCartItems) => prevCartItems.filter((item) => item !== product));
+    setCartCount((prevCartCount) => Math.max(0, prevCartCount - 1));
+  };
+
+  const updateCartItemQuantity = (updatedItem) => {
+    setCartItems((prevCartItems) =>
+      prevCartItems.map((item) => (item === updatedItem ? updatedItem : item))
+    );
   };
 
   const value = {
     cartItems,
     cartCount,
     addToCart,
+    removeFromCart,
+    updateCartItemQuantity
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

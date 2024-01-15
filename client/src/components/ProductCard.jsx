@@ -1,11 +1,12 @@
+// ProductCard.js
 import React, { useState } from 'react';
-import { useQuery, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import './Product.css';
 import { GET_PRODUCTS } from '../utils/mutations';
 import { useCart } from '../contexts/CartContext';
 
 function ProductCard() {
-  const { addToCart } = useCart();
+  const { addToCart, cartItems } = useCart(); 
   const { loading, error, data } = useQuery(GET_PRODUCTS);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -28,7 +29,13 @@ function ProductCard() {
   };
 
   const handleAddToCart = (product) => {
-    addToCart(product);
+    const isInCart = cartItems.some((item) => item === product);
+
+    if (!isInCart) {
+      addToCart(product);
+    } else {
+      console.log('Product is already in the cart');
+    }
   };
 
   return (
@@ -46,11 +53,22 @@ function ProductCard() {
         {products.map((product) => (
           <div key={product.id} className='product-card'>
             <img
-             src={product.imageUrl} 
-             alt={product.name} 
-             className='product-image'
-             />
-            <button className='add-button' onClick={() => handleAddToCart()}>+ Add</button>
+              src={product.imageUrl}
+              alt={product.name}
+              className='product-image'
+            />
+            {cartItems.includes(product) ? (
+              <button className='product-amount'>
+                Quantity
+              </button>
+            ) : (
+              <button
+              className='add-button'
+              onClick={() => handleAddToCart(product)}
+            >
+              + Add
+            </button>
+            )}
             <h3>${product.price}</h3>
             <p>{product.name}</p>
           </div>
@@ -58,6 +76,6 @@ function ProductCard() {
       </div>
     </div>
   );
-};
+}
 
 export default ProductCard;

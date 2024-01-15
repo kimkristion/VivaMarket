@@ -7,18 +7,41 @@ const userSchema = new Schema({
     required: true,
     unique: true,
     trim: true,
+    minlength: 3,
+    maxLength: 30
   },
   email: {
     type: String,
     required: true,
     unique: true,
+    trim: true,
     match: [/.+@.+\..+/, 'Must match an email address!'],
   },
   password: {
     type: String,
     required: true,
-    minlength: 5,
+    minlength: 8,
   },
+  firstName: {
+    type: String,
+    trim: true,
+    minlength: 2,
+    maxLength: 30
+  },
+  lastName: {
+    type: String,
+    trim: true,
+    minlength: 2,
+    maxLength: 30
+  },
+  address: {
+    type: String,
+    trim: true
+  },
+  phoneNumber: {
+    type: String,
+    match: [/^\d{10}$/, 'Please provide a valid 10-digit phone number.']
+  }
 });
 
 userSchema.pre('save', async function (next) {
