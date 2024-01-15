@@ -74,7 +74,21 @@
   line-height: 1.5;
 }
 
+.delete-btn {
+  background: none;
+  border: none;
+  color: black;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline; 
+  padding: 0; 
+  margin: 0; 
+}
 
+.delete-btn:hover {
+  text-decoration: none; 
+  color: #cc0000;
+}
 
 .checkout-button {
   background-color: #0073e7;

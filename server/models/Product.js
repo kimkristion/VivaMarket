@@ -50,9 +50,8 @@ const productSchema = new Schema({
     max: 1000,
   },
   category: {
-    type: String,
-    enum: ['Electronics', 'Pet', 'Room Decor'],
-    default: 'Other',
+    type: Schema.Types.Mixed,
+    ref: 'Category'
   },
   imageUrl: {
     type: String,

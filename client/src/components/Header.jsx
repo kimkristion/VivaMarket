@@ -23,7 +23,7 @@ const Header = () => {
 
       <nav>
         <Link to="/">Home</Link>
-        <a href="#">Shop</a>
+        <Link to="/store">Store</Link>
         <Link to="/categories">Categories</Link>
         <Link to="/contact-us">Contact</Link>
         <button className="darkBtn" onClick={toggleTheme}>

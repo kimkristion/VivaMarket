@@ -14,7 +14,7 @@ const CartPage = () => {
   const handleQuantityChange = (item, newQuantity) => {
     const updatedItem = parseInt(newQuantity, 10);
     updateCartItemQuantity({ ...item, quantity: isNaN(updatedItem) ? 1 : updatedItem });
-  };
+};
 
   return (
     <div className="cart-container">
@@ -37,7 +37,6 @@ const CartPage = () => {
               <th className="price-column">Price</th>
               <th className="quantity-column">Quantity</th>
               <th className="total-column">Total</th>
-              <th className="delete-column">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -48,6 +47,7 @@ const CartPage = () => {
                   <div className="item-details">
                     <h3 className="item-name">{item.name}</h3>
                     <p className="item-price">${item.price}/ea</p>
+                    <button className="delete-btn" onClick={() => handleDelete(item)}>Delete</button>
                   </div>
                 </td>
                 <td className="price-cell">${item.price}</td>
@@ -60,9 +60,6 @@ const CartPage = () => {
                   />
                 </td>
                 <td className="total-cell">${item.price * item.quantity}</td>
-                <td className="delete-cell">
-                  <button onClick={() => handleDelete(item)}>Delete</button>
-                </td>
               </tr>
             ))}
           </tbody>

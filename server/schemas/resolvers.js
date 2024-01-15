@@ -1,4 +1,4 @@
-const { User, Product } = require('../models/index');
+const { User, Product, Category } = require('../models/index');
 const { signToken, AuthenticationError, dateFormat } = require('../utils/auth');
 
 const resolvers = {
@@ -21,6 +21,12 @@ const resolvers = {
     products: async () => {
       return await Product.find();
     },
+    categories: async () => {
+      return await Category.find();
+    },
+    category: async (parent, { category_name }) => {
+      return await Category.findOne({ category_name });
+    }
   },
 
   Mutation: {
@@ -48,6 +54,16 @@ const resolvers = {
       return { token, user };
     },
 
+    addCategory: async (parent, { category_name }) => {
+      try {
+        const newCategory = new Category({ category_name });
+        const saveCategory = await newCategory.save();
+        return saveCategory;
+      } catch (error) {
+        throw new Error(`Failed to add category: ${error.message}`);
+      }
+    },
+
     createProduct: async (parent, {
       name,
       description,
@@ -62,7 +78,7 @@ const resolvers = {
         if (existingProduct) {
           throw new Error("Product with this name already exists");
         }
-    
+
         const product = await Product.create({
           name,
           description,
