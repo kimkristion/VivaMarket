@@ -1,0 +1,118 @@
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #007bff; /* Walmart blue color */
+  color: #ffffff; /* Text color */
+}
+
+.logo-link {
+  text-decoration: none;
+}
+
+.logo img {
+  width: 100px; /* Adjust the size as needed */
+  height: auto;
+  object-fit: contain;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link,
+.dropdown-link {
+  text-decoration: none;
+  color: #ffffff;
+  margin: 0 20px;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.dropdown-link:hover {
+  color: #ffffff; /* Text color on hover */
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #007bff; /* Walmart blue color */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #ffffff;
+  padding: 15px;
+  display: block;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+  background-color: #0056b3; /* Darker blue color on hover */
+}
+
+.darkBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.darkThemeIcon img {
+  width: 30px;
+  height: 30px;
+}
+
+.account,
+.cart-link {
+  text-decoration: none;
+  color: #ffffff;
+  margin: 0 20px;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.account:hover,
+.cart-link:hover {
+  color: #ffffff; /* Text color on hover */
+}
+
+.cart {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.cart-icon img {
+  width: 40px; /* Adjust the size as needed */
+  height: auto;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.cart-inventory {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #0056b3; /* Darker blue color */
+  color: #ffffff;
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 50%;
+  font-weight: bold;
+}

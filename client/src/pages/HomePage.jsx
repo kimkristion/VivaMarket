@@ -17,8 +17,6 @@ export default function HomePage() {
 
   return (
     <div className="home-container">
-      <h2>Welcome to our ecommerce website</h2>
-
       <Slider {...settings}>
         {images.map((image, index) => (
           <div key={index}>
@@ -26,12 +24,12 @@ export default function HomePage() {
           </div>
         ))}
       </Slider>
-      <button className="btn">
-        <a href="/categories">SEARCH</a>
-      </button>
-
-      <div className="featured-items">
-          
+      <div className="slideshow-header">
+        <ul>
+          <li>Free Shipping</li>
+          <li>30 Day Returns Guranteed</li>
+          <li>Secure Checkout</li>
+        </ul>
       </div>
     </div>
   );

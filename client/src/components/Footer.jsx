@@ -7,10 +7,21 @@ const Footer = () => {
     <footer className="footer-container">
       <div className="footer-section about">
         <h3>About Us</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet quam in eros
-          fermentum facilisis.
-        </p>
+        <ul>
+          <li>
+             Jason Grant <a className="blue-link" href="https://www.linkedin.com/in/jason-grant-231334267/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          <li>
+            Kristion Kim <a href="https://www.linkedin.com/in/kristion-kim-90062525a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          <li>
+            Alex Lopez <a href="https://www.linkedin.com/in/jason-grant-231334267/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          <li>
+            Emilio Name <a href="https://www.linkedin.com/in/jason-grant-231334267/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </li>
+          
+        </ul>
       </div>
 
       <div className="footer-section links">

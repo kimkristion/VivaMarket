@@ -20,12 +20,17 @@ const typeDefs = `
     description: String!
     price: Float!
     quantity: Int!
-    category: String!
+    userQuantity: Int
+    category: ID!
     imageUrl: String
     createdAt: String!
     reviews: [Review]!
   }
 
+  type Category {
+    _id: ID!
+    category_name: String!
+  }
 
   type Auth {
     token: ID!
@@ -38,6 +43,8 @@ const typeDefs = `
     me: User
     products: [Product]
     product(name: String!): Product
+    categories: [Category]
+    category(category_name: String!): Category
   }
 
   input ReviewInput {
@@ -52,10 +59,11 @@ const typeDefs = `
       description: String!,
       price: Float!,
       quantity: Int!,
-      category: String!,
+      category: ID!,
       imageUrl: String!
     ): Product
     addReview(productId: ID!, input: ReviewInput): Product
+    addCategory(category_name: String!): Category
   }
 `;
 

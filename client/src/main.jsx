@@ -1,10 +1,10 @@
 import ReactDOM from 'react-dom/client'
-import './index.css'
+//import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App';
 import Home from './pages/HomePage.jsx';
-import Categories from './pages/Categories.jsx';
+import Store from './pages/Store.jsx';
 //import Detail from './pages/Detail.jsx';
 import Login from './pages/LoginPage.jsx';
 import Signup from './pages/Signup.jsx';
@@ -12,7 +12,7 @@ import Signup from './pages/Signup.jsx';
 //import OrderHistory from './pages/OrderHistory';
 import ContactUs from './pages/ContactUs';
 import Error from './pages/Error.jsx'
-//import CartPage from './pages/Cart.jsx';
+import Cart from './pages/Cart.jsx'
 
 const router = createBrowserRouter([
   {
@@ -27,7 +27,8 @@ const router = createBrowserRouter([
       { path: '/login', element: <Login /> },
       { path: '/signup', element: <Signup />},
       { path: '/contact-us', element: <ContactUs /> },
-      { path: '/categories', element: <Categories />},
+      { path: '/store', element: <Store />},
+      { path: '/cart', element: <Cart />}
     ]
   }
 ]);

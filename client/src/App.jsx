@@ -14,6 +14,9 @@ import Footer from './components/Footer';
 import { CartProvider } from './contexts/CartContext';
 import './App.css'
 import { ThemeProvider } from './contexts/ThemeContext';
+import { loadStripe } from '@stripe/stripe-js'
+
+const stripePromise = loadStripe('')
 
 //import ProductDetailPage from './pages/ProductDetailPage';
 
