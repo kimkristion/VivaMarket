@@ -1,20 +1,27 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
+import Auth from '../utils/auth';
 import './CartPage.css';
 import EmptyCart from '../assets/EmptyCart.png';
 
 const CartPage = () => {
-  const { cartItems, removeFromCart, updateCartItemQuantity } = useCart();
+  const { cartItems, removeFromCart, handleQuantityChange, updateCartItemQuantity } = useCart();
   const { cartCount } = useCart();
 
   const handleDelete = (item) => {
     removeFromCart(item);
   };
 
-  const handleQuantityChange = (item, newQuantity) => {
-    const updatedItem = parseInt(newQuantity, 10);
-    updateCartItemQuantity({ ...item, quantity: isNaN(updatedItem) ? 1 : updatedItem });
-};
+  const handleIncreaseQuantity = (item) => {
+    updateCartItemQuantity(item._id, 'increase');
+  };
+
+  const handleDecreaseQuantity = (item) => {
+    updateCartItemQuantity(item._id, 'decrease');
+  };
+
+  const subtotal = cartItems.reduce((total, item) => total + item.price * item.userQuantity, 0);
 
   return (
     <div className="cart-container">
@@ -25,9 +32,19 @@ const CartPage = () => {
       )}
 
       {cartItems.length === 0 ? (
-        <div className='empty-cart'>
+        <div className="empty-cart">
           <img src={EmptyCart} alt='Empty Cart' className='empty-cart-image' />
-          <p>Your cart is feeling a bit light right now. Discover amazing deals and add something special!</p>
+          {Auth.loggedIn() ? (
+            <div>
+              <h1>Time to start shopping</h1>
+              <p>Your cart is feeling a bit light right now. Discover amazing deals and add something special!</p>
+            </div>
+          ) : (
+            <div>
+              <p>Sign in to see your saved items.</p>
+              <Link to='/login' button>Sign in</Link>
+            </div>
+          )}
         </div>
       ) : (
         <table className="cart-table">
@@ -52,17 +69,19 @@ const CartPage = () => {
                 </td>
                 <td className="price-cell">${item.price}</td>
                 <td className="quantity-cell">
-                  <input
-                    type="number"
-                    value={item.quantity}
-                    onChange={(e) => handleQuantityChange(item, e.target.value)}
-                    min="1"
-                  />
+                <button onClick={() => handleDecreaseQuantity(item)}>-</button>
+                <p>{item.userQuantity}</p>
+                  <button onClick={() => handleIncreaseQuantity(item)}>+</button>
                 </td>
-                <td className="total-cell">${item.price * item.quantity}</td>
+                <td className="total-cell">${item.price * item.userQuantity}</td>
               </tr>
             ))}
           </tbody>
+          <div className='checkout'>
+            <p>Subtotal: ${subtotal}</p>
+            <Link to='/store'>Continue Shopping</Link>
+            <button>Checkout</button>
+          </div>
         </table>
       )}
     </div>
