@@ -6,7 +6,7 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations.js';
 
 const Login = (props) => {
-  const [formData, setFormData] = useState({ username: '', password: '' });
+  const [formData, setFormData] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
   //const navigate = useNavigate();
@@ -36,7 +36,7 @@ const Login = (props) => {
 
       // clear form values
       setFormData({
-        username: '',
+        email: '',
         password: '',
       });
     };
@@ -46,12 +46,12 @@ const Login = (props) => {
     <div className="login-page">
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
+        <label htmlFor="email">Email Address:</label>
         <input
           type="text"
-          id="username"
-          name="username"
-          value={formData.username}
+          id="email"
+          name="email"
+          value={formData.email}
           onChange={handleInputChange}
         />
 

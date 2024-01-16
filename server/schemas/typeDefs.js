@@ -42,9 +42,9 @@ const typeDefs = `
     user(username: String!): User
     me: User
     products: [Product]
-    product(name: String!): Product
+    product(_id: ID!): Product
     categories: [Category]
-    category(category_name: String!): Category
+    category(_id: ID!): Category
   }
 
   input ReviewInput {
@@ -53,7 +53,7 @@ const typeDefs = `
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
-    login(username: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
     createProduct(
       name: String!,
       description: String!,
