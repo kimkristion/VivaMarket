@@ -9,16 +9,16 @@ const Footer = () => {
         <h3>About Us</h3>
         <ul>
           <li>
-             Jason Grant <a href="https://www.linkedin.com/in/jason-grant-231334267/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+             Jason Grant <a className="blue-link" href="https://www.linkedin.com/in/jason-grant-231334267/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </li>
           <li>
-            Kristion Kim-Web Developer
+            Kristion Kim <a href="https://www.linkedin.com/in/kristion-kim-90062525a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </li>
           <li>
-            Alex Lopez-Web Developer
+            Alex Lopez <a href="https://www.linkedin.com/in/jason-grant-231334267/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </li>
           <li>
-            Emilio Name-Web Developer
+            Emilio Name <a href="https://www.linkedin.com/in/jason-grant-231334267/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </li>
           
         </ul>

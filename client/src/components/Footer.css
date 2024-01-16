@@ -1,11 +1,14 @@
 
 .footer-container {
+    color: blue;
+    text-decoration: none;
     padding: 10px;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     position: sticky;
     bottom: 0;
+    white-space: nowrap;
   }
 
 .dark footer, .dark footer a {
@@ -34,8 +37,8 @@
   }
   
   .footer-section a {
-    text-decoration: none;
-    display: block;
+    text-decoration: underline;
+    display: inline-block;
     margin-bottom: 5px;
   }
   
