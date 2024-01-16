@@ -29,6 +29,10 @@ export default function HomePage() {
       <button className="btn">
         <a href="/categories">SEARCH</a>
       </button>
+
+      <div className="featured-items">
+          
+      </div>
     </div>
   );
 }
