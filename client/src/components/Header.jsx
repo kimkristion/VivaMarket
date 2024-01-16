@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CartIcon from '../assets/CartLogo.png';
-import Logo from '../assets/logo 3-svg.svg';
+import Logo from '../assets/logo-3-svg.svg';
 import Auth from '../utils/auth';
 import DarkThemeIcon from '/src/assets/dark theme.png';
 import { useTheme } from '../contexts/ThemeContext';
