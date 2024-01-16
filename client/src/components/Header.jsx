@@ -57,6 +57,7 @@ const Header = () => {
             <img src={DarkThemeIcon} alt="Dark Theme" />
           </span>
         </button>
+        
       </nav>
 
       {Auth.loggedIn() ? (
