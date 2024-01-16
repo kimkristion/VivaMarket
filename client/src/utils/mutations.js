@@ -1,12 +1,12 @@
 import { gql } from '@apollo/client';
 
 export const LOGIN_USER = gql`
-  mutation login($username: String!, $password: String!) {
-    login(username: $username, password: $password) {
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
       token
       user {
         _id
-        username
+        email
       }
     }
   }
@@ -71,6 +71,16 @@ export const GET_PRODUCT_BY_ID = gql`
         }
         createdAt
       }
+    }
+  }
+`;
+
+
+export const GET_CATEGORY_BY_ID = gql`
+  query Category($_id: ID!) {
+    category(_id: $_id) {
+      _id
+      category_name
     }
   }
 `;

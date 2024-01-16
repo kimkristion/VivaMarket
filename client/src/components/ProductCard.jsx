@@ -16,12 +16,11 @@ function ProductCard() {
 
   useEffect(() => {
     const storedCartItems = localStorage.getItem('cartItems');
-    if (storedCartItems) {
-      if (cartItems.length === 0) {
-        setCartItems(JSON.parse(storedCartItems));
-      }
+    if (storedCartItems && cartItems.length === 0) {
+      setCartItems(JSON.parse(storedCartItems));
     }
-  }, [cartItems, setCartItems]);
+  }, [cartItems.length, setCartItems]);
+  
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
@@ -55,9 +54,7 @@ function ProductCard() {
   const handleProductClick = (product) => {
     setSelectedProduct(product);
   };
-
-  console.log(selectedProduct);
-
+  
   return (
     <div className='product-list'>
       <h2>Product List</h2>

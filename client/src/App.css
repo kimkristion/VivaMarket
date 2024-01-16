@@ -493,6 +493,30 @@ label {
   width: 100%;
 }
 
+.product-detail-container {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-detail-container .col-2 img {
+  padding: 0;
+  width: 250px;
+  height: auto;
+}
+
+.product-detail-container .col-2 {
+  padding: 20px;
+}
+
+.product-detail-container h4 {
+  margin: 20px 0;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+
 @media screen and (max-width: 768px) {
   .footer-container {
     flex-direction: column;
