@@ -42,7 +42,7 @@ const typeDefs = `
     user(username: String!): User
     me: User
     products: [Product]
-    product(name: String!): Product
+    product(_id: ID!): Product
     categories: [Category]
     category(category_name: String!): Category
   }

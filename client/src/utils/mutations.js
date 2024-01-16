@@ -50,6 +50,31 @@ export const PRODUCTS = gql`
 
 `;
 
+export const GET_PRODUCT_BY_ID = gql`
+  query Product($_id: ID!) {
+    product(_id: $_id) {
+      _id
+      name
+      description
+      price
+      quantity
+      userQuantity
+      category
+      imageUrl
+      createdAt
+      reviews {
+        reviewId
+        reviewBody
+        user {
+          _id
+          username
+        }
+        createdAt
+      }
+    }
+  }
+`;
+
 
 
 

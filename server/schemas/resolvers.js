@@ -15,8 +15,8 @@ const resolvers = {
       }
       throw new AuthenticationError('Not authenticated');
     },
-    product: async (parent, { name }) => {
-      return Product.findOne({ name });
+    product: async (parent, { _id }) => {
+      return Product.findById({ _id });
     },
     products: async () => {
       return await Product.find();

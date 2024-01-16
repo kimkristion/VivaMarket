@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import Home from './pages/HomePage.jsx';
 import Store from './pages/Store.jsx';
-//import Detail from './pages/Detail.jsx';
+import ProductDetail from './components/ProductDetail.jsx';
 import Login from './pages/LoginPage.jsx';
 import Signup from './pages/Signup.jsx';
 //import Success from './pages/Success';
@@ -28,7 +28,8 @@ const router = createBrowserRouter([
       { path: '/signup', element: <Signup />},
       { path: '/contact-us', element: <ContactUs /> },
       { path: '/store', element: <Store />},
-      { path: '/cart', element: <Cart />}
+      { path: '/cart', element: <Cart />},
+      { path: '/store/:_id', element: <ProductDetail />}
     ]
   }
 ]);

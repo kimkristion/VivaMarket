@@ -125,6 +125,7 @@ header {
   color: rgb(0, 0, 0);
   border-bottom: 0.5px solid #000;
   height: 3.5rem;
+  width: 100%
 }
 
 .slideshow-header ul {
@@ -441,9 +442,6 @@ label {
   margin-bottom: 1rem;
 }
 
-.add-button:hover {
-  background-color: #45a049;
-}
 
 .footer-container {
   background-color: #333;
