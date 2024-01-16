@@ -15,8 +15,8 @@ const resolvers = {
       }
       throw new AuthenticationError('Not authenticated');
     },
-    product: async (parent, { name }) => {
-      return Product.findOne({ name });
+    product: async (parent, { _id }) => {
+      return Product.findById({ _id });
     },
     products: async () => {
       return await Product.find();
@@ -24,8 +24,8 @@ const resolvers = {
     categories: async () => {
       return await Category.find();
     },
-    category: async (parent, { category_name }) => {
-      return await Category.findOne({ category_name });
+    category: async (parent, { _id }) => {
+      return await Category.findOne({ _id });
     }
   },
 
@@ -36,8 +36,8 @@ const resolvers = {
       return { token, user };
     },
     
-    login: async (parent, { username, password }) => {
-      const user = await User.findOne({ username });
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
 
       if (!user) {
         throw new AuthenticationError('User not found');
