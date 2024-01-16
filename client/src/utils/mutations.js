@@ -44,7 +44,6 @@ export const PRODUCTS = gql`
         reviewBody
         user {
           _id
-          username
         }
         createdAt
       }
@@ -70,7 +69,6 @@ export const GET_PRODUCT_BY_ID = gql`
         reviewBody
         user {
           _id
-          username
         }
         createdAt
       }
