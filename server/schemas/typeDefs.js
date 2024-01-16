@@ -20,6 +20,7 @@ const typeDefs = `
     description: String!
     price: Float!
     quantity: Int!
+    userQuantity: Int
     category: ID!
     imageUrl: String
     createdAt: String!

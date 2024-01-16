@@ -1,19 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
-import AuthService from '../utils/auth';
+import Auth from '../utils/auth';
 import './CartPage.css';
 import EmptyCart from '../assets/EmptyCart.png';
 
 const CartPage = () => {
-  const { cartItems, removeFromCart, handleQuantityChange } = useCart();
+  const { cartItems, removeFromCart, handleQuantityChange, updateCartItemQuantity } = useCart();
   const { cartCount } = useCart();
-
-  const user = AuthService.getProfile();
 
   const handleDelete = (item) => {
     removeFromCart(item);
   };
+
+  const handleIncreaseQuantity = (item) => {
+    updateCartItemQuantity(item._id, 'increase');
+  };
+
+  const handleDecreaseQuantity = (item) => {
+    updateCartItemQuantity(item._id, 'decrease');
+  };
+
+  const subtotal = cartItems.reduce((total, item) => total + item.price * item.userQuantity, 0);
 
   return (
     <div className="cart-container">
@@ -23,16 +31,19 @@ const CartPage = () => {
         <h2>Cart <span className='cart-count'>({cartCount} items)</span></h2>
       )}
 
-    {cartItems.length === 0 ? (
-        <div className={`empty-cart ${user ? '' : 'signed-out'}`}>
+      {cartItems.length === 0 ? (
+        <div className="empty-cart">
           <img src={EmptyCart} alt='Empty Cart' className='empty-cart-image' />
-          {user ? (
+          {Auth.loggedIn() ? (
             <div>
-               <h1>Time to start shopping</h1>
-               <p>Your cart is feeling a bit light right now. Discover amazing deals and add something special!</p>
+              <h1>Time to start shopping</h1>
+              <p>Your cart is feeling a bit light right now. Discover amazing deals and add something special!</p>
             </div>
           ) : (
-            <p>Sign in to save items to your cart.</p>
+            <div>
+              <p>Sign in to see your saved items.</p>
+              <Link to='/login' button>Sign in</Link>
+            </div>
           )}
         </div>
       ) : (
@@ -58,19 +69,16 @@ const CartPage = () => {
                 </td>
                 <td className="price-cell">${item.price}</td>
                 <td className="quantity-cell">
-                  <input
-                    type="number"
-                    value={item.quantity}
-                    onChange={(e) => handleQuantityChange(item, e.target.value)}
-                    min="1"
-                  />
+                <button onClick={() => handleDecreaseQuantity(item)}>-</button>
+                <p>{item.userQuantity}</p>
+                  <button onClick={() => handleIncreaseQuantity(item)}>+</button>
                 </td>
-                <td className="total-cell">${item.price * item.quantity}</td>
+                <td className="total-cell">${item.price * item.userQuantity}</td>
               </tr>
             ))}
           </tbody>
           <div className='checkout'>
-            <p>Subtotal: $</p>
+            <p>Subtotal: ${subtotal}</p>
             <Link to='/store'>Continue Shopping</Link>
             <button>Checkout</button>
           </div>

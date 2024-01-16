@@ -10,7 +10,8 @@ import '../components/Header.css'
 
 const Header = () => {
   const { toggleTheme } = useTheme();
-  const { cartCount } = useCart();
+  const { cartItems } = useCart();
+  const cartCount = cartItems.reduce((total, item) => total + item.userQuantity, 0);
 
   const logout = (event) => {
     event.preventDefault();

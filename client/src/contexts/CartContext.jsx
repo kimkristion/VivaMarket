@@ -22,36 +22,56 @@ export const CartProvider = ({ children }) => {
 
 
   const addToCart = (product) => {
-    const updatedCartItems = [...cartItems, product];
-    updateCartState(updatedCartItems);
-  };
+    const existingProductIndex = cartItems.findIndex((item) => item._id === product._id);
 
+    if (existingProductIndex !== -1) {
+      setCartItems((prevCartItems) => {
+        const updatedCartItems = [...prevCartItems];
+        updatedCartItems[existingProductIndex].userQuantity += 1;
+        updateCartState(updatedCartItems);
+        return updatedCartItems;
+      });
+    } else {
+      setCartItems((prevCartItems) => {
+        const updatedCartItems = [...prevCartItems, { ...product, userQuantity: 1 }];
+        updateCartState(updatedCartItems);
+        return updatedCartItems;
+      });
+    }
+  };
+  
   const removeFromCart = (product) => {
     const updatedCartItems = cartItems.filter((item) => item !== product);
     updateCartState(updatedCartItems);
   };
 
-  const updateCartItemQuantity = (parent, newQuantity) => {
-    setCartItems((prevCartItems) =>
-      prevCartItems.map((item) =>
-        item.name === parent ? { ...item, quantity: newQuantity } : item
-      )
-    );
-  };
+  // Inside CartContext.js
 
-  const handleQuantityChange = (parent, newQuantity) => {
-    const updatedQuantity = Math.max(parseInt(newQuantity, 10) || 1, 1);
-    updateCartItemQuantity(parent, updatedQuantity);
-  };
+const updateCartItemQuantity = (productId, action) => {
+  setCartItems((prevCartItems) =>
+    prevCartItems.map((item) =>
+      item._id === productId
+        ? {
+            ...item,
+            userQuantity:
+              action === 'increase'
+                ? item.userQuantity + 1
+                : Math.max(item.userQuantity - 1, 0),
+          }
+        : item
+    ).filter((item) => item.userQuantity > 0) // Filter out items with zero quantity
+  );
+};
 
+  
 
   const value = {
     cartItems,
     cartCount,
+    setCartItems,
     addToCart,
     removeFromCart,
     updateCartItemQuantity,
-    handleQuantityChange
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

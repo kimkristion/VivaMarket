@@ -24,13 +24,15 @@ export const ADD_USER = gql`
   }
 `;
 
-export const GET_PRODUCTS = gql`
+export const PRODUCTS = gql`
   query {
     products {
+      _id
       name
       description
       price
       quantity
+      userQuantity
       category
       imageUrl
       createdAt
