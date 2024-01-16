@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CartIcon  from '../assets/CartLogo.png'
-import Logo from '../assets/logo 3-svg.svg'
+import CartIcon from '../assets/CartLogo.png';
+import Logo from '../assets/logo 3-svg.svg';
 import Auth from '../utils/auth';
 import DarkThemeIcon from '/src/assets/dark theme.png';
 import { useTheme } from '../contexts/ThemeContext';
 import { useCart } from '../contexts/CartContext';
+import '../components/Header.css'
 
 const Header = () => {
   const { toggleTheme } = useTheme();
@@ -17,15 +18,39 @@ const Header = () => {
   };
 
   return (
-    <header>
-      
-      <Link to="/" ><span className="logo"><img src={Logo} alt="" /></span></Link>
+    <header className="header">
+      <Link to="/" className="logo-link">
+        <span className="logo">
+          <img src={Logo} alt="Logo" />
+        </span>
+      </Link>
 
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/store">Store</Link>
-        <Link to="/categories">Categories</Link>
-        <Link to="/contact-us">Contact</Link>
+      <nav className="nav">
+        <Link to="/" className="nav-link">
+          Home
+        </Link>
+        <Link to="/store" className="nav-link">
+          Store
+        </Link>
+        <div className="dropdown">
+          <Link to="/categories" className="dropbtn">
+            Categories <i className="fa fa-caret-down"></i>
+          </Link>
+          <div className="dropdown-content">
+            <Link to="/categories/furniture" className="dropdown-link">
+              Furniture
+            </Link>
+            <Link to="/categories/pet" className="dropdown-link">
+              Pet
+            </Link>
+            <Link to="/categories/room-decor" className="dropdown-link">
+              Room Decor
+            </Link>
+          </div>
+        </div>
+        <Link to="/contact-us" className="nav-link">
+          Contact
+        </Link>
         <button className="darkBtn" onClick={toggleTheme}>
           <span className="darkThemeIcon">
             <img src={DarkThemeIcon} alt="Dark Theme" />
@@ -34,26 +59,28 @@ const Header = () => {
       </nav>
 
       {Auth.loggedIn() ? (
-        <a className="account" onClick={logout}>
+        <Link to="/" className="account" onClick={logout}>
           Logout
-        </a>
+        </Link>
       ) : (
         <>
-          <Link className="account" to="/login">
+          <Link to="/login" className="account">
             Login
           </Link>
-          <Link className="account" to="/signup">
+          <Link to="/signup" className="account">
             Signup
           </Link>
         </>
       )}
 
-      <Link to="/cart">
+      <Link to="/cart" className="cart-link">
         <div className="cart">
           <span className="cart-icon">
             <img src={CartIcon} alt="Cart" />
           </span>
-          <span id="cart-inventory">{cartCount}</span>
+          <span id="cart-inventory" className="cart-inventory">
+            {cartCount}
+          </span>
         </div>
       </Link>
     </header>

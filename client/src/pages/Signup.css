@@ -1,0 +1,85 @@
+
+.signup-page {
+    max-width: 400px;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: black;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+  }
+  
+  .error-message {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border-radius: 4px;
+  }
+
+.password-input-container {
+    position: relative;
+  }
+  
+  .password-input {
+    padding-right: 30px; 
+  }
+  
+  .toggle-password-btn {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: red;
+  }
+
+  .password-icon {
+    position: relative;
+    width: 20px;
+    height: auto;
+    margin-right: 5px;
+    background-color: none;
+  }
+  
+  

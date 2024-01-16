@@ -32,7 +32,7 @@ function ProductCard() {
     const isInCart = cartItems.some((item) => item === product);
 
     if (!isInCart) {
-      addToCart(product);
+      addToCart(product, 1); 
     } else {
       console.log('Product is already in the cart');
     }
@@ -63,11 +63,11 @@ function ProductCard() {
               </button>
             ) : (
               <button
-              className='add-button'
-              onClick={() => handleAddToCart(product)}
-            >
-              + Add
-            </button>
+                className='add-button'
+                onClick={() => handleAddToCart(product)}
+              >
+                + Add
+              </button>
             )}
             <h3>${product.price}</h3>
             <p>{product.name}</p>

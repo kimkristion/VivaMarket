@@ -1,20 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
+import AuthService from '../utils/auth';
 import './CartPage.css';
 import EmptyCart from '../assets/EmptyCart.png';
 
 const CartPage = () => {
-  const { cartItems, removeFromCart, updateCartItemQuantity } = useCart();
+  const { cartItems, removeFromCart, handleQuantityChange } = useCart();
   const { cartCount } = useCart();
+
+  const user = AuthService.getProfile();
 
   const handleDelete = (item) => {
     removeFromCart(item);
   };
-
-  const handleQuantityChange = (item, newQuantity) => {
-    const updatedItem = parseInt(newQuantity, 10);
-    updateCartItemQuantity({ ...item, quantity: isNaN(updatedItem) ? 1 : updatedItem });
-};
 
   return (
     <div className="cart-container">
@@ -24,10 +23,17 @@ const CartPage = () => {
         <h2>Cart <span className='cart-count'>({cartCount} items)</span></h2>
       )}
 
-      {cartItems.length === 0 ? (
-        <div className='empty-cart'>
+    {cartItems.length === 0 ? (
+        <div className={`empty-cart ${user ? '' : 'signed-out'}`}>
           <img src={EmptyCart} alt='Empty Cart' className='empty-cart-image' />
-          <p>Your cart is feeling a bit light right now. Discover amazing deals and add something special!</p>
+          {user ? (
+            <div>
+               <h1>Time to start shopping</h1>
+               <p>Your cart is feeling a bit light right now. Discover amazing deals and add something special!</p>
+            </div>
+          ) : (
+            <p>Sign in to save items to your cart.</p>
+          )}
         </div>
       ) : (
         <table className="cart-table">
@@ -63,6 +69,11 @@ const CartPage = () => {
               </tr>
             ))}
           </tbody>
+          <div className='checkout'>
+            <p>Subtotal: $</p>
+            <Link to='/store'>Continue Shopping</Link>
+            <button>Checkout</button>
+          </div>
         </table>
       )}
     </div>
