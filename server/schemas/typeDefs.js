@@ -1,9 +1,10 @@
 const typeDefs = `
   type User {
     _id: ID
-    username: String
-    email: String
-    password: String
+    email: String!
+    password: String!
+    firstName: String!
+    lastName: String!
     reviews: [Review]!
   }
 
@@ -39,7 +40,7 @@ const typeDefs = `
 
   type Query {
     users: [User]
-    user(username: String!): User
+    user(_id: ID!): User
     me: User
     products: [Product]
     product(_id: ID!): Product
@@ -52,7 +53,7 @@ const typeDefs = `
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(email: String!, password: String!, firstName: String!, lastName: String!): Auth
     login(email: String!, password: String!): Auth
     createProduct(
       name: String!,
