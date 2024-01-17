@@ -27,18 +27,6 @@ function ProductCard() {
 
   const products = searchTerm ? filteredProducts : data.products;
 
-  const handleSearch = (query) => {
-    setSearchTerm(query);
-    if (query) {
-      const filtered = data.products.filter((product) =>
-        product.name.toLowerCase().includes(query.toLowerCase())
-      );
-      setFilteredProducts(filtered);
-    } else {
-      setFilteredProducts([]);
-    }
-  };
-
   const handleAddToCart = (product) => {
     addToCart(product);
   };
@@ -58,14 +46,6 @@ function ProductCard() {
   return (
     <div className='product-list'>
       <h2>Product List</h2>
-      <div className='search-bar'>
-        <input
-          type="text"
-          placeholder="Search on VivaMarket"
-          value={searchTerm}
-          onChange={(e) => handleSearch(e.target.value)}
-        />
-      </div>
       <div className='products'>
         {products.map((product) => (
           <div key={product._id} className='product-card' onClick={() => handleProductClick(product)}>
