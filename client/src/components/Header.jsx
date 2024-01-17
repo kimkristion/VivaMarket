@@ -6,7 +6,6 @@ import Auth from '../utils/auth';
 import DarkThemeIcon from '/src/assets/dark theme.png';
 import { useTheme } from '../contexts/ThemeContext';
 import { useCart } from '../contexts/CartContext';
-import '../components/Header.css'
 
 const Header = () => {
   const { toggleTheme } = useTheme();

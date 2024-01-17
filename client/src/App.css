@@ -57,15 +57,13 @@ body, html {
   fill: #173054;
 }
 
-header {
+.header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 1rem;
-  background-color: #173054;
-  color: rgb(0, 0, 0);
-  border-bottom: 0.5px solid #000;
-  height: 3.5rem;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: transparent; /* Set the background to transparent */
+  color: black; /* Adjust the text color as needed */
 }
 
 .home-container {
@@ -96,7 +94,7 @@ header {
 }
 
 .logo img {
-  width: 25%;
+  width: 30%;
   border-radius: 50%;
   margin-bottom: 10px;
 }
@@ -141,6 +139,7 @@ header {
 
 nav {
   display: flex;
+  align-items: center;
 }
 
 nav a {
@@ -148,6 +147,13 @@ nav a {
   text-decoration: none;
   margin: 0 15px;
   font-weight: bold;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: black; 
+  font-weight: bold;
+  margin-right: 20px; 
 }
 
 .dropdown {
@@ -218,6 +224,7 @@ nav a {
   height: auto;
   width:  65px;
 }
+
 
 #cart-inventory {
   position: fixed;

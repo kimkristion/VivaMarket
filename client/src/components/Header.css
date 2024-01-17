@@ -1,118 +1,102 @@
-
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  background-color: #007bff; /* Walmart blue color */
-  color: #ffffff; /* Text color */
+  padding: 10px 20px;
+  background-color: transparent; /* Set the background to transparent */
+  color: black; /* Adjust the text color as needed */
 }
 
 .logo-link {
   text-decoration: none;
-}
-
-.logo img {
-  width: 100px; /* Adjust the size as needed */
-  height: auto;
-  object-fit: contain;
-}
-
-.nav {
   display: flex;
   align-items: center;
 }
 
-.nav-link,
-.dropdown-link {
-  text-decoration: none;
-  color: #ffffff;
-  margin: 0 20px;
-  font-size: 18px;
-  font-weight: 500;
-  transition: color 0.3s ease;
+.logo {
+  margin: 0 auto; /* Center the logo horizontally */
 }
 
-.nav-link:hover,
-.dropdown-link:hover {
-  color: #ffffff; /* Text color on hover */
+.logo img {
+  width: 50px; /* Adjust the logo size as needed */
+  height: auto;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: black; /* Adjust the text color as needed */
+  font-weight: bold;
 }
 
 .dropdown {
   position: relative;
+  display: inline-block;
 }
 
 .dropbtn {
-  cursor: pointer;
+  text-decoration: none;
+  color: #fff; /* Adjust the text color as needed */
+  font-weight: bold;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #007bff; /* Walmart blue color */
+  background-color: #f9f9f9; /* Adjust the background color as needed */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
 .dropdown-content a {
-  color: #ffffff;
-  padding: 15px;
-  display: block;
+  color: #333; /* Adjust the text color as needed */
+  padding: 12px 16px;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  display: block;
+  font-weight: normal;
 }
 
 .dropdown-content a:hover {
-  background-color: #0056b3; /* Darker blue color on hover */
+  background-color: #f1f1f1;
 }
 
 .darkBtn {
-  background: none;
+  background-color: transparent;
   border: none;
   cursor: pointer;
 }
 
 .darkThemeIcon img {
-  width: 30px;
-  height: 30px;
+  width: 20px; /* Adjust the icon size as needed */
+  height: auto;
 }
 
-.account,
+.account {
+  text-decoration: none;
+  color: #fff; /* Adjust the text color as needed */
+  font-weight: bold;
+}
+
 .cart-link {
   text-decoration: none;
-  color: #ffffff;
-  margin: 0 20px;
-  font-size: 18px;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.account:hover,
-.cart-link:hover {
-  color: #ffffff; /* Text color on hover */
+  color: #fff; /* Adjust the text color as needed */
 }
 
 .cart {
   display: flex;
   align-items: center;
-  position: relative;
 }
 
 .cart-icon img {
-  width: 40px; /* Adjust the size as needed */
+  width: 30px; 
   height: auto;
-  object-fit: contain;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .cart-inventory {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background-color: #0056b3; /* Darker blue color */
-  color: #ffffff;
-  font-size: 14px;
-  padding: 6px 12px;
-  border-radius: 50%;
   font-weight: bold;
 }
