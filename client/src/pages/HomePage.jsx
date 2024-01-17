@@ -1,7 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
 
-
 import "slick-carousel/slick/slick-theme.css";
 
 export default function HomePage() {
@@ -14,6 +13,15 @@ export default function HomePage() {
   const settings = {
     autoplay: true,
     autoplaySpeed: 3000,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (

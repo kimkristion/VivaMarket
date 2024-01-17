@@ -57,12 +57,7 @@
   }
   
   @media screen and (max-width: 768px) {
-    .footer-container {
-      flex-direction: column;
-    }
-  
-    .footer-section {
-      max-width: none;
-      width: 100%;
+    .footer-container{
+      bottom: 1;
     }
   }

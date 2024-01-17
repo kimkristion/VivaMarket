@@ -1,6 +1,6 @@
-import React from 'react';
-//import './Footer.css'; 
-import { Link } from 'react-router-dom';
+import React from "react";
+import "./Footer.css";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -9,18 +9,46 @@ const Footer = () => {
         <h3>About Us</h3>
         <ul>
           <li>
-             Jason Grant <a className="blue-link" href="https://www.linkedin.com/in/jason-grant-231334267/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            Jason Grant{" "}
+            <a
+              className="blue-link"
+              href="https://www.linkedin.com/in/jason-grant-231334267/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
           </li>
           <li>
-            Kristion Kim <a href="https://www.linkedin.com/in/kristion-kim-90062525a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            Kristion Kim{" "}
+            <a
+              href="https://www.linkedin.com/in/kristion-kim-90062525a/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
           </li>
           <li>
-            Alex Lopez <a href="https://www.linkedin.com/in/jason-grant-231334267/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            Alex Lopez{" "}
+            <a
+              href="https://www.linkedin.com/in/AlexisJLO"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
           </li>
           <li>
-            Emilio Name <a href="https://www.linkedin.com/in/jason-grant-231334267/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            Emilio Name{" "}
+            <a
+              href="https://www.linkedin.com/in/jason-grant-231334267/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
           </li>
-          
         </ul>
       </div>
 
@@ -36,14 +64,16 @@ const Footer = () => {
           <li>
             <a href="/categories">Categories</a>
           </li>
-          
         </ul>
       </div>
 
       <div className="footer-section contact">
-      <Link to="/contact-us"><a><h3>Contact</h3></a></Link> 
+        <Link to="/contact-us">
+          <a>
+            <h3>Contact</h3>
+          </a>
+        </Link>
       </div>
-
 
       <div className="footer-section disclaimer">
         <p>&copy; 2024 VivaMarket. All Rights Reserved.</p>
