@@ -2,15 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery, useApolloClient } from '@apollo/client';
 import { GET_PRODUCT_BY_ID, GET_CATEGORY_BY_ID } from '../utils/mutations';
+import { useCart } from '../contexts/CartContext';
 import './ProductDetail.css';
 
 function ProductDetailCard() {
+  const { addToCart } = useCart(); 
   const { _id } = useParams();
   const client = useApolloClient();
 
   const { loading: productLoading, error: productError, data: productData } = useQuery(GET_PRODUCT_BY_ID, {
     variables: { _id },
   });
+
+  const handleAddToCart = (product) => {
+    addToCart(product);
+  };
 
   const [product, setProduct] = useState();
   const [categoryData, setCategoryData] = useState(null);
@@ -64,7 +70,9 @@ function ProductDetailCard() {
             <h4 className='price'>${product.price}</h4>
             <h3>Product Details</h3>
             <p className='description'>{product.description}</p>
-            <button className='add-to-cart'>Add to Cart</button>
+            <button className='add-to-cart' onClick={() => handleAddToCart(product)}>
+              Add to Cart
+              </button>
           </>
         </div>
       </div>

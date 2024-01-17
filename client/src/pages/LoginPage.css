@@ -1,33 +1,41 @@
+/* LoginPage.css */
+
 .login-container {
     max-width: 400px;
     margin: auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 50%
   }
   
   .login-heading {
     text-align: center;
-    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
   }
   
   .login-form {
     display: flex;
     flex-direction: column;
+    
   }
   
   .login-label {
-    margin-bottom: 8px;
-    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 16px;
   }
   
   .login-input {
-    padding: 8px;
-    margin-bottom: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: black;
   }
   
   .login-button {
@@ -37,22 +45,22 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 18px;
   }
   
   .login-button:hover {
-    background-color: #0056b3;
+    background-color: #007bff;
   }
   
   .login-signup-link {
-    margin-top: 16px;
+    margin-top: 15px;
+    text-align: center;
     font-size: 14px;
   }
   
   .login-signup-link a {
     color: #007bff;
     text-decoration: none;
-    font-weight: bold;
   }
   
   .login-signup-link a:hover {

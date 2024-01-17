@@ -45,7 +45,6 @@ function ProductCard() {
   
   return (
     <div className='product-list'>
-      <h2>Product List</h2>
       <div className='products'>
         {products.map((product) => (
           <div key={product._id} className='product-card' onClick={() => handleProductClick(product)}>
@@ -74,7 +73,7 @@ function ProductCard() {
             )}
 
             <h3>${product.price}</h3>
-            <Link to={`/store/${product._id}`}><p>{product.name}</p></Link>
+            <Link to={`/store/${product._id}`}><p className='product-name'>{product.name}</p></Link>
           </div>
         ))}
       </div>

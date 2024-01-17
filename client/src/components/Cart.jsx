@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
 import Auth from '../utils/auth';
-import './CartPage.css';
+//import './CartPage.css';
 import EmptyCart from '../assets/EmptyCart.png';
 
 const CartPage = () => {
@@ -69,10 +69,12 @@ const CartPage = () => {
                 </td>
                 <td className="price-cell">${item.price}</td>
                 <td className="quantity-cell">
-                <button onClick={() => handleDecreaseQuantity(item)}>-</button>
-                <p>{item.userQuantity}</p>
-                  <button onClick={() => handleIncreaseQuantity(item)}>+</button>
-                </td>
+  <div className="quantity-controls">
+    <button onClick={() => handleDecreaseQuantity(item)}>-</button>
+    <p>{item.userQuantity}</p>
+    <button onClick={() => handleIncreaseQuantity(item)}>+</button>
+  </div>
+</td>
                 <td className="total-cell">${item.price * item.userQuantity}</td>
               </tr>
             ))}
