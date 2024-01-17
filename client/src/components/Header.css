@@ -2,9 +2,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background-color: transparent; /* Set the background to transparent */
-  color: black; /* Adjust the text color as needed */
+  max-width: 100%;
+  padding: 20px;
+  background-color: #007bff; /* Walmart blue color */
+  color: #ffffff; /* Text color */
 }
 
 .logo-link {
@@ -99,4 +100,48 @@
 
 .cart-inventory {
   font-weight: bold;
+}
+
+
+@media screen and (max-width: 768px) {
+  .header {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    margin: none;
+  
+  }
+  .account {
+    max-width: 40px;
+    font-size: 12px;
+  }
+  .wave {
+    display: none;
+  }
+  .nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+  }
+  .nav a {
+    font-size: 12px;
+    margin: 5px;
+  }
+  .logo-link {
+    max-width: 100%;
+  } 
+ 
+  .dropdown-content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+  }
+  .cart-icon img {
+    max-width: 50px;
+  }
+  .nav-link,
+  .dropdown-link {
+    margin: 10px 0;
+  }
 }
