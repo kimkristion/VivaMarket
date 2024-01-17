@@ -1,17 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import CartIcon from '../assets/CartLogo.png';
-import Logo from '../assets/logo-3-svg.svg';
-import Auth from '../utils/auth';
-import DarkThemeIcon from '/src/assets/dark theme.png';
-import { useTheme } from '../contexts/ThemeContext';
-import { useCart } from '../contexts/CartContext';
-import '../components/Header.css'
+import React from "react";
+import { Link } from "react-router-dom";
+import CartIcon from "../assets/CartLogo.png";
+import Logo from "../assets/logo-3-svg.svg";
+import Auth from "../utils/auth";
+import DarkThemeIcon from "/src/assets/dark theme.png";
+import { useTheme } from "../contexts/ThemeContext";
+import { useCart } from "../contexts/CartContext";
+import "../components/Header.css";
 
 const Header = () => {
   const { toggleTheme } = useTheme();
   const { cartItems } = useCart();
-  const cartCount = cartItems.reduce((total, item) => total + item.userQuantity, 0);
+  const cartCount = cartItems.reduce(
+    (total, item) => total + item.userQuantity,
+    0
+  );
 
   const logout = (event) => {
     event.preventDefault();
@@ -20,11 +23,11 @@ const Header = () => {
 
   return (
     <header className="header">
-      <Link to="/" className="logo-link">
-        <span className="logo">
-          <img src={Logo} alt="Logo" />
-        </span>
-      </Link>
+      
+        <Link to="/" className="logo-link"><span className="logo">
+          <img src={Logo} alt="Logo" /> </span>
+        </Link>
+     
 
       <nav className="nav">
         <Link to="/" className="nav-link">
@@ -33,10 +36,10 @@ const Header = () => {
         <Link to="/store" className="nav-link">
           Store
         </Link>
+        <Link to="/categories" className="dropbtn">
+          Categories <i className="fa fa-caret-down"></i>
+        </Link>
         <div className="dropdown">
-          <Link to="/categories" className="dropbtn">
-            Categories <i className="fa fa-caret-down"></i>
-          </Link>
           <div className="dropdown-content">
             <Link to="/categories/furniture" className="dropdown-link">
               Furniture
@@ -57,7 +60,6 @@ const Header = () => {
             <img src={DarkThemeIcon} alt="Dark Theme" />
           </span>
         </button>
-        
       </nav>
 
       {Auth.loggedIn() ? (

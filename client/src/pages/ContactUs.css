@@ -49,3 +49,16 @@ form textarea {
     margin-bottom: 10px;
   }
   
+  @media screen and (max-width: 768px) {
+    .contact-us {
+      max-width: 100%;
+    }
+    .profiles-section {
+      flex-direction: column;
+      align-items: center;
+      max-width: 100%;
+    }
+    .profile-card img {
+      max-width: 80px;
+    }
+  }

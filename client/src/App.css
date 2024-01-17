@@ -523,27 +523,13 @@ label {
   font-weight: bold;
 }
 
-
-@media screen and (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-  }
-
-  .footer-section {
-    max-width: none;
-    width: 100%;
-  }
-}
-
-
 @keyframes slideIn {
   to {
     left: 0;
   }
 }
 
-
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   body {
     padding: 1rem;
   }
@@ -556,4 +542,23 @@ label {
   nav {
     margin-top: 10px;
   }
+  .home-container {
+    max-width: 100%;
+  }
+  .slideshow-header {
+    max-width: 100%;
+  }
+    
+  .footer-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    height: 278px;
+  }
+
+  .footer-section {
+    max-width: 100%;
+    flex-direction: row;
+  }
 }
+
