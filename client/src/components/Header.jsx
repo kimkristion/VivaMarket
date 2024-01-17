@@ -6,7 +6,6 @@ import Auth from "../utils/auth";
 import DarkThemeIcon from "/src/assets/dark theme.png";
 import { useTheme } from "../contexts/ThemeContext";
 import { useCart } from "../contexts/CartContext";
-import "../components/Header.css";
 
 const Header = () => {
   const { toggleTheme } = useTheme();
@@ -23,12 +22,6 @@ const Header = () => {
 
   return (
     <header className="header">
-      
-        <Link to="/" className="logo-link"><span className="logo">
-          <img src={Logo} alt="Logo" /> </span>
-        </Link>
-     
-
       <nav className="nav">
         <Link to="/" className="nav-link">
           Home
@@ -61,6 +54,10 @@ const Header = () => {
           </span>
         </button>
       </nav>
+      
+      <Link to="/" className="logo-link"><span className="logo">
+          <img src={Logo} alt="Logo" /> </span>
+        </Link>
 
       {Auth.loggedIn() ? (
         <Link to="/" className="account" onClick={logout}>
