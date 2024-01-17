@@ -10,6 +10,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { Outlet } from 'react-router-dom';
 
+import TopLevelHeader from './components/TopLevelHeader';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { CartProvider } from './contexts/CartContext';
@@ -43,6 +44,7 @@ function App() {
       <ThemeProvider>
         <CartProvider>
           <div className='App'>
+            <TopLevelHeader />
             <Header />
             <Outlet />
             <Footer />

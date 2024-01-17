@@ -1,5 +1,4 @@
 import React from "react";
-import "./Footer.css";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -56,28 +55,30 @@ const Footer = () => {
         <h3>Quick Links</h3>
         <ul>
           <li>
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="/shop">Shop</a>
+            <Link to="/shop">Shop</Link>
           </li>
           <li>
-            <a href="/categories">Categories</a>
+            <Link to="/categories">Categories</Link>
           </li>
         </ul>
       </div>
 
       <div className="footer-section contact">
+        <h3>Contact</h3>
         <Link to="/contact-us">
-          <a>
-            <h3>Contact</h3>
-          </a>
+          <p>Contact us through our form</p>
         </Link>
       </div>
 
       <div className="footer-section disclaimer">
         <p>&copy; 2024 VivaMarket. All Rights Reserved.</p>
-        <p>Terms of Service | Privacy Policy</p>
+        <p>
+          <Link to="/terms-of-service">Terms of Service</Link> |{" "}
+          <Link to="/privacy-policy">Privacy Policy</Link>
+        </p>
       </div>
     </footer>
   );

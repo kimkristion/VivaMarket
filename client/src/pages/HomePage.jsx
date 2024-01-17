@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 export default function HomePage() {
   const images = [
-    "/src/assets/slideshow/main background.jpg",
+    "/src/assets/slideshow/bannerOne.jpg",
     "/src/assets/slideshow/2nd picture.jpg",
     "/src/assets/slideshow/3rd pic.jpg",
   ];
