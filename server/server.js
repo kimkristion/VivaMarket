@@ -4,7 +4,7 @@ const { expressMiddleware } = require("@apollo/server/express4");
 const { authMiddleware } = require("./utils/auth");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
-
+require('dotenv').config();
 
 const { typeDefs, resolvers } = require("./schemas");
 const db = require("./config/connection");
