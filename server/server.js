@@ -4,6 +4,7 @@ const { expressMiddleware } = require("@apollo/server/express4");
 const { authMiddleware } = require("./utils/auth");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
+const path = require('path');
 require('dotenv').config();
 
 const { typeDefs, resolvers } = require("./schemas");
@@ -27,6 +28,9 @@ const transporter = nodemailer.createTransport({
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static(path.join(__dirname, '../client/build')));
+}
 
 app.post("/contact-us", async (req, res) => {
   const { name, email, message } = req.body;
